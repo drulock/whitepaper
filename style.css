@@ -250,6 +250,10 @@ a:hover {
     margin-bottom: 10px;
 }
 
+#staking::before {
+    background-color: rgba(0,0,0,0.78); /* Más oscuro solo para staking */
+}
+
 /* Tokenomics (ejemplo) */
 .tokenomics-details {
     text-align: left;
