@@ -127,14 +127,14 @@ a:hover {
     overflow: hidden; /* Para evitar que elementos con transform se salgan */
 }
 
-.section::before { /* Overlay oscuro para mejorar legibilidad del texto */
+.section::before {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.6); /* Ajusta opacidad según necesites */
+    background-color: rgba(0, 0, 0, 0.78); /* Más oscuro */
     z-index: 1;
 }
 
