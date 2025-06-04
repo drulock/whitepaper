@@ -1,0 +1,594 @@
+/* Reset y Estilos Globales */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth; /* Desplazamiento suave para anclas */
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.8;
+    color: #f0f0f0; /* Color de texto claro para contrastar con fondos oscuros */
+    background-color: #1a1a2e; /* Un fondo oscuro base por si alguna imagen no carga */
+    overflow-x: hidden; /* Evita scroll horizontal */
+}
+
+h1, h2, h3, h4 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #ffffff; /* Títulos blancos */
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+}
+
+h1 {
+    font-size: 3.5em;
+    text-transform: uppercase;
+}
+
+h2 {
+    font-size: 2.8em;
+    border-bottom: 2px solid #1abc9c; /* Un acento de color */
+    padding-bottom: 10px;
+    display: inline-block; /* Para que el borde no ocupe todo el ancho */
+}
+
+h3 {
+    font-size: 1.8em;
+    color: #e0e0e0;
+}
+
+p {
+    margin-bottom: 15px;
+    font-size: 1.1em;
+    font-weight: 300;
+}
+
+ul {
+    list-style: disc;
+    margin-left: 20px;
+    margin-bottom: 15px;
+}
+
+li {
+    margin-bottom: 8px;
+}
+
+a {
+    color: #1abc9c; /* Color de enlace principal */
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Navegación */
+#main-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(10, 20, 30, 0.85); /* Fondo semi-transparente */
+    backdrop-filter: blur(5px); /* Efecto frosted glass */
+    padding: 15px 0;
+    z-index: 1000;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+#main-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#main-nav ul li {
+    display: inline-block;
+    margin: 0 10px;
+}
+
+#main-nav ul li a {
+    color: #f0f0f0;
+    font-weight: 400;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.9em;
+    padding: 8px 12px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+#main-nav ul li a:hover,
+#main-nav ul li a.active {
+    background-color: #1abc9c;
+    color: #1a1a2e;
+    text-decoration: none;
+}
+
+
+/* Estructura de Secciones */
+.section {
+    min-height: 100vh; /* Cada sección ocupa al menos la altura de la ventana */
+    padding: 100px 10px 60px; /* Padding superior para dejar espacio a la nav fija */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative; /* Para el efecto parallax y overlays */
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed; /* Efecto parallax básico */
+    color: #ffffff; /* Asegurar que el texto sea legible sobre imágenes */
+    overflow: hidden; /* Para evitar que elementos con transform se salgan */
+}
+
+.section::before { /* Overlay oscuro para mejorar legibilidad del texto */
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* Ajusta opacidad según necesites */
+    z-index: 1;
+}
+
+/* Sección Hero específica (pantalla completa) */
+#hero.full-screen {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+#hero .overlay { /* Overlay específico para el hero si se necesita diferente */
+    /* background-color: rgba(0, 0, 0, 0.5);  Ya cubierto por .section::before, ajustar si es diferente */
+}
+
+.content-wrapper {
+    max-width: 900px; /* Ancho máximo del contenido */
+    margin: 0 auto;
+    position: relative; /* Para que esté sobre el overlay ::before */
+    z-index: 2;
+    animation: fadeInText 1s ease-out forwards;
+    opacity: 0 8px; /* Inicialmente invisible para animación */
+}
+
+@keyframes fadeInText {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Botón CTA */
+.cta-button {
+    display: inline-block;
+    background-color: #1abc9c;
+    color: #ffffff;
+    padding: 15px 30px;
+    font-size: 1.2em;
+    font-weight: 700;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 30px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.cta-button:hover {
+    background-color: #16a085;
+    transform: translateY(-3px);
+    text-decoration: none;
+}
+
+/* Elementos específicos */
+.placeholder-text {
+    font-style: italic;
+    color: #bdc3c7;
+}
+
+.highlight {
+    font-weight: 700;
+    color: #1abc9c; /* Color de acento */
+    font-size: 1.2em;
+}
+
+/* NFT Gallery (ejemplo) */
+.nft-gallery {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-top: 30px;
+}
+
+.nft-card {
+    background-color: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 8px;
+    padding: 20px;
+    margin: 10px;
+    width: calc(33% - 40px); /* Ajusta según cuantos quieras por fila */
+    min-width: 250px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    backdrop-filter: blur(3px);
+}
+
+.nft-card img {
+    max-width: 100%;
+    border-radius: 6px;
+    margin-bottom: 15px;
+}
+
+.nft-card h4 {
+    color: #1abc9c;
+    font-size: 1.3em;
+}
+
+/* Roadmap (ejemplo) */
+.roadmap-container {
+    display: flex;
+    flex-direction: column; /* O row si prefieres horizontal */
+    align-items: stretch; /* Para que las fases tengan el mismo ancho si es columna */
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.roadmap-phase {
+    background-color: rgba(255,255,255,0.05);
+    padding: 20px;
+    border-left: 4px solid #1abc9c;
+    text-align: left;
+}
+
+.roadmap-phase h4 {
+    color: #1abc9c;
+    margin-bottom: 10px;
+}
+
+/* Tokenomics (ejemplo) */
+.tokenomics-details {
+    text-align: left;
+    background-color: rgba(255,255,255,0.05);
+    padding: 25px;
+    border-radius: 8px;
+}
+.tokenomics-details h4 {
+    margin-top: 20px;
+    color: #1abc9c;
+}
+
+/* Social Links */
+.social-links a {
+    display: inline-block;
+    margin: 0 10px;
+    padding: 10px 15px;
+    border: 1px solid #1abc9c;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+}
+.social-links a:hover {
+    background-color: #1abc9c;
+    color: #1a1a2e;
+    text-decoration: none;
+}
+
+/* Carrusel de iconos grande y centrado con efecto 3D al pasar el ratón */
+.icon-carousel {
+  width: 100%;
+  max-width: 1100px;
+  margin: 2rem auto;
+  overflow: hidden;
+  padding: 3rem 0;
+  perspective: 1200px;
+  background: rgba(20,20,40,0.85);
+  border-radius: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.carousel-track {
+  display: flex;
+  gap: 5rem;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.carousel-icon {
+  flex: 0 0 auto;
+  width: 160px;
+  height: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.4s cubic-bezier(.25,.8,.25,1), box-shadow 0.3s;
+  transform-style: preserve-3d;
+  cursor: pointer;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.10);
+  box-shadow: 0 8px 32px 0 rgba(0,0,0,0.18);
+  position: relative;
+}
+
+.carousel-icon img, .carousel-icon svg {
+  width: 100px;
+  height: 100px;
+  filter: drop-shadow(0 4px 24px #00ffe7cc);
+  transition: transform 0.4s, filter 0.4s;
+  pointer-events: none;
+}
+
+.carousel-icon:hover {
+  box-shadow: 0 16px 48px 0 #00ffe7cc;
+  z-index: 2;
+}
+
+.carousel-icon:hover img, .carousel-icon:hover svg {
+  filter: drop-shadow(0 8px 32px #00ffe7);
+  transform: scale(1.18) rotateY(10deg);
+}
+
+@media (max-width: 900px) {
+  .carousel-icon { width: 110px; height: 110px; }
+  .carousel-icon img, .carousel-icon svg { width: 70px; height: 70px; }
+  .carousel-track { gap: 2.5rem; }
+}
+
+@media (max-width: 600px) {
+  .icon-carousel { padding: 1.5rem 0; }
+  .carousel-icon { width: 70px; height: 70px; }
+  .carousel-icon img, .carousel-icon svg { width: 40px; height: 40px; }
+  .carousel-track { gap: 1rem; }
+}
+
+@keyframes spin3d {
+  0%   { transform: rotateY(0deg) scale(1.18); }
+  100% { transform: rotateY(360deg) scale(1.18); }
+}
+
+.carousel-icon:hover img,
+.carousel-icon:hover svg {
+  animation: spin3d 1.2s linear infinite;
+  filter: drop-shadow(0 8px 32px #00ffe7);
+}
+
+.tokenomics-chart-container {
+  background: rgba(20,20,40,0.95);
+  border-radius: 32px;
+  box-shadow: 0 8px 48px 0 #00ffe7cc;
+  padding: 2.5rem;
+  max-width: 600px;
+  margin: 2rem auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#tokenomicsChart {
+  background: transparent;
+}
+
+.icon-carousel-quienessomos {
+  width: 100%;
+  max-width: 1200px;
+  margin: 3rem auto 2rem auto;
+  padding: 3rem 0 2rem 0;
+  background: rgba(20,20,40,0.95);
+  border-radius: 40px;
+  box-shadow: 0 12px 64px 0 #00ffe7cc;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.icon-carousel-quienessomos .carousel-track {
+  display: flex;
+  gap: 5rem;
+  justify-content: center;
+  align-items: flex-end;
+  width: 100%;
+}
+
+.icon-carousel-quienessomos .carousel-icon {
+  flex: 0 0 auto;
+  width: 200px;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  background: rgba(255,255,255,0.10);
+  border-radius: 50%;
+  box-shadow: 0 8px 32px 0 rgba(0,0,0,0.18);
+  transition: box-shadow 0.3s, transform 0.4s cubic-bezier(.25,.8,.25,1);
+  position: relative;
+  cursor: pointer;
+  margin-bottom: 0.5rem;
+}
+
+.icon-carousel-quienessomos .carousel-icon img,
+.icon-carousel-quienessomos .carousel-icon svg {
+  width: 120px;
+  height: 120px;
+  margin-bottom: 0.5rem;
+  filter: drop-shadow(0 4px 16px #00ffe7cc);
+  transition: transform 0.4s, filter 0.4s;
+  pointer-events: none;
+}
+
+.icon-carousel-quienessomos .carousel-icon:hover img,
+.icon-carousel-quienessomos .carousel-icon:hover svg {
+  animation: spin3d 1.2s linear infinite;
+  filter: drop-shadow(0 8px 32px #00ffe7);
+}
+
+.icon-carousel-quienessomos .carousel-icon:hover {
+  box-shadow: 0 16px 48px 0 #00ffe7cc;
+  z-index: 2;
+}
+
+.icon-carousel-quienessomos .carousel-title {
+  margin-top: 1.2rem;
+  font-size: 1.35rem;
+  color: #fff;
+  font-family: 'Montserrat', 'Roboto', sans-serif;
+  font-weight: 600;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-shadow: 0 2px 8px #181c2b99;
+}
+
+@media (max-width: 1100px) {
+  .icon-carousel-quienessomos .carousel-icon { width: 140px; height: 140px; }
+  .icon-carousel-quienessomos .carousel-icon img,
+  .icon-carousel-quienessomos .carousel-icon svg { width: 80px; height: 80px; }
+  .icon-carousel-quienessomos .carousel-track { gap: 2.5rem; }
+  .icon-carousel-quienessomos { padding: 2rem 0 1rem 0; }
+  .icon-carousel-quienessomos .carousel-title { font-size: 1.1rem; }
+}
+
+@media (max-width: 700px) {
+  .icon-carousel-quienessomos .carousel-icon { width: 90px; height: 90px; }
+  .icon-carousel-quienessomos .carousel-icon img,
+  .icon-carousel-quienessomos .carousel-icon svg { width: 48px; height: 48px; }
+  .icon-carousel-quienessomos .carousel-track { gap: 1rem; }
+  .icon-carousel-quienessomos { padding: 1rem 0 0.5rem 0; }
+  .icon-carousel-quienessomos .carousel-title { font-size: 0.9rem; }
+}
+
+@keyframes spin3d {
+  0%   { transform: rotateY(0deg) scale(1.18); }
+  100% { transform: rotateY(360deg) scale(1.18); }
+}
+
+/* Modal para imagen grande */
+.carousel-modal-bg {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  left: 0; top: 0; width: 100vw; height: 100vh;
+  background: rgba(10,20,40,0.92);
+  justify-content: center;
+  align-items: center;
+  transition: background 0.3s;
+}
+.carousel-modal-bg.active {
+  display: flex;
+}
+.carousel-modal-img {
+  max-width: 90vw;
+  max-height: 80vh;
+  border-radius: 32px;
+  box-shadow: 0 8px 64px #00ffe7cc;
+  background: #181c2b;
+  padding: 2rem;
+  animation: modalIn 0.4s cubic-bezier(.25,.8,.25,1);
+}
+@keyframes modalIn {
+  0% { transform: scale(0.7); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+.carousel-modal-close {
+  position: absolute;
+  top: 32px;
+  right: 48px;
+  color: #fff;
+  font-size: 2.5rem;
+  cursor: pointer;
+  z-index: 10000;
+  transition: color 0.2s;
+}
+.carousel-modal-close:hover {
+  color: #00ffe7;
+}
+
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 30px 20px;
+    background-color: #0a141e; /* Un poco más oscuro que el nav */
+    color: #7f8c8d;
+    font-size: 0.9em;
+}
+
+.footer-logo-img {
+  height: 180px;
+  max-width: 100%;
+}
+@media (max-width: 600px) {
+  .footer-logo-img {
+    height: 70px;
+  }
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+    h1 { font-size: 2.8em; }
+    h2 { font-size: 2.2em; }
+    .section { padding: 80px 20px 40px; } /* Menos padding en pantallas medianas */
+
+    #main-nav ul li {
+        margin: 0 5px;
+    }
+    #main-nav ul li a {
+        font-size: 0.8em;
+        padding: 6px 8px;
+    }
+
+    .nft-card {
+        width: calc(50% - 30px); /* 2 por fila */
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        font-size: 15px; /* Ajuste global para móviles */
+    }
+    h1 { font-size: 2.2em; }
+    h2 { font-size: 1.8em; }
+    p { font-size: 1em; }
+
+    #main-nav {
+        padding: 10px 0;
+        /* Aquí podrías implementar un menú hamburguesa si hay muchos items */
+    }
+    #main-nav ul {
+        /* Si hay muchos items, hacer que la nav sea scrolleable horizontalmente
+           o implementar menú hamburguesa */
+        white-space: nowrap;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch; /* Para iOS */
+        padding: 5px 0; /* Espacio para el scrollbar si aparece */
+    }
+     #main-nav ul::-webkit-scrollbar { /* Ocultar scrollbar si se desea */
+        display: none;
+    }
+    #main-nav ul li {
+        display: inline-block; /* Asegurar que sigan en línea */
+        margin: 0 8px;
+    }
+
+    .section {
+        min-height: auto; /* Dejar que el contenido defina la altura en móviles */
+        padding: 60px 5px 30px;
+    }
+
+    .content-wrapper {
+        padding: 0 4px;
+    }
+    
+    .nft-card {
+        width: calc(100% - 20px); /* 1 por fila */
+    }
+
+    .roadmap-container {
+        flex-direction: column;
+    }
+}
