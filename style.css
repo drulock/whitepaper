@@ -12,7 +12,7 @@ html {
 body {
     font-family: 'Roboto', sans-serif;
     line-height: 1.8;
-    color: #f0f0f0; /* Color de texto claro para contrastar con fondos oscuros */
+    color: #ffffff; /* Color de texto claro para contrastar con fondos oscuros */
     background-color: #1a1a2e; /* Un fondo oscuro base por si alguna imagen no carga */
     overflow-x: hidden; /* Evita scroll horizontal */
 }
