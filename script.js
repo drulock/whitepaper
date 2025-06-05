@@ -78,12 +78,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 datasets: [{
                     data: [15, 20, 30, 15, 15, 5],
                     backgroundColor: [
-                        '#1ecfcf', // Cyan mate
-                        '#b04fc2', // Magenta mate
-                        '#6fcf4f', // Verde mate
-                        '#ffe066', // Amarillo mate
-                        '#4f8cff', // Azul mate
-                        '#e07fa1', // Rosa mate
+                        '#1ecfcf', 
+                        '#b04fc2', 
+                        '#6fcf4f', 
+                        '#ffe066', 
+                        '#4f8cff', 
+                        '#e07fa1', 
                     ],
                     borderColor: [
                         '#1ecfcf', '#b04fc2', '#6fcf4f', '#ffe066', '#4f8cff', '#e07fa1'
