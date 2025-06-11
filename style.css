@@ -69,6 +69,41 @@ a:hover {
     text-decoration: underline;
 }
 
+.ul-list {
+  list-style: none;
+  padding: 0;
+  margin: 24px auto 24px auto;
+  max-width: 600px;
+  text-align: center;
+}
+
+.ul-list li {
+  position: relative;
+  padding-left: 28px;
+  margin-bottom: 16px;
+  font-size: 1.13em;
+  color: #fff;
+  font-family: 'Montserrat', 'Roboto', sans-serif;
+  display: flex;
+  align-items: left;
+  justify-content: left;
+}
+
+.ul-list li::before {
+  content: '';
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #1abc9c 0%, #00ffe7 100%);
+  margin-right: 12px;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  box-shadow: 0 2px 8px #00ffe755;
+}
+
 /* Navegación */
 #main-nav {
     position: fixed;
@@ -136,7 +171,7 @@ a:hover {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.78); /* Más oscuro */
+    background-color: rgba(0, 0, 0, 0.5); /* Más oscuro fondo de las imagenes*/
     z-index: 1;
 }
 
@@ -160,13 +195,17 @@ a:hover {
 }
 
 .content-wrapper {
-    max-width: 900px; /* Ancho máximo del contenido */
+    max-width: 900px;
     margin: 0 auto;
-    background-color: rgba(255,255,255,0.05);
-    position: relative; /* Para que esté sobre el overlay ::before */
+    background: rgba(10,20,40,0.68); /* Fondo oscuro semitransparente */
+    backdrop-filter: blur(6px);      /* Efecto glass suave */
+    border-radius: 18px;
+    box-shadow: 0 4px 32px 0 #00ffe733;
+    position: relative;
     z-index: 2;
     animation: fadeInText 1s ease-out forwards;
-    opacity: 0 8px; /* Inicialmente invisible para animación */
+    padding: 32px 24px;
+    color: #fff; /* Asegura texto blanco */
 }
 
 @keyframes fadeInText {
@@ -276,6 +315,19 @@ a:hover {
     color: #1abc9c;
 }
 
+.tokenomics-chart-container {
+  background: rgba(20,20,40,0.45);
+  border-radius: 32px;
+  box-shadow: 0 0 48px 0 #00ffe7cc, 0 0 0 8px #181c2b99 inset;
+  padding: 2.5rem;
+  max-width: 520px;
+  margin: 2rem auto 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(8px) saturate(1.2);
+}
+
 /* Social Links */
 .social-links a {
     display: inline-block;
@@ -299,8 +351,6 @@ a:hover {
   overflow: hidden;
   padding: 3rem 0;
   perspective: 1200px;
-  background: rgba(20,20,40,0.85);
-  border-radius: 32px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -388,74 +438,82 @@ a:hover {
   background: transparent;
 }
 
-.icon-carousel-quienessomos {
-  width: 100%;
-  max-width: 1200px;
-  margin: 3rem auto 2rem auto;
-  padding: 3rem 0 2rem 0;
-  background: rgba(20,20,40,0.95);
-  border-radius: 40px;
-  box-shadow: 0 12px 64px 0 #00ffe7cc;
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
-}
-
+/* Carrusel "Quiénes Somos" en formato rectángulo con imágenes alineadas */
 .icon-carousel-quienessomos .carousel-track {
   display: flex;
-  gap: 5rem;
+  gap: 6px; /* Separación entre imágenes */
   justify-content: center;
-  align-items: flex-end;
+  align-items: stretch;
   width: 100%;
+  height: 100%;
 }
 
 .icon-carousel-quienessomos .carousel-icon {
-  flex: 0 0 auto;
-  width: 200px;
-  height: 200px;
+  background: none;
+  border-radius: 0;
+  box-shadow: none;
+  flex: 1 1 0;
+  height: 100%;
+  margin: 0;
+  padding: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-end;
-  background: rgba(255,255,255,0.10);
-  border-radius: 50%;
-  box-shadow: 0 8px 32px 0 rgba(0,0,0,0.18);
-  transition: box-shadow 0.3s, transform 0.4s cubic-bezier(.25,.8,.25,1);
-  position: relative;
+  justify-content: center;
   cursor: pointer;
-  margin-bottom: 0.5rem;
+  transition: transform 0.3s;
+  min-width: 0; /* Para que no se desborde */
 }
 
 .icon-carousel-quienessomos .carousel-icon img,
 .icon-carousel-quienessomos .carousel-icon svg {
-  width: 120px;
-  height: 120px;
+  width: 100%;
+  max-width: 180px;
+  height: 170px;
+  object-fit: contain; /* Cambiado de cover a contain */
+  background: rgba(255,255,255,0.07);
   margin-bottom: 0.5rem;
+  margin-top: 0.5rem;
   filter: drop-shadow(0 4px 16px #00ffe7cc);
   transition: transform 0.4s, filter 0.4s;
   pointer-events: none;
+  border-radius: 18px;
+  padding: 0;
+  display: block;
 }
 
-.icon-carousel-quienessomos .carousel-icon:hover img,
-.icon-carousel-quienessomos .carousel-icon:hover svg {
-  animation: spin3d 1.2s linear infinite;
-  filter: drop-shadow(0 8px 32px #00ffe7);
+@media (max-width: 900px) {
+  .icon-carousel-quienessomos {
+    padding: 0 8px;
+  }
+  .icon-carousel-quienessomos .carousel-track {
+    gap: 10px;
+  }
+  .icon-carousel-quienessomos .carousel-icon img,
+  .icon-carousel-quienessomos .carousel-icon svg {
+    max-width: 110px;
+    height: 90px;
+  }
 }
 
-.icon-carousel-quienessomos .carousel-icon:hover {
-  box-shadow: 0 16px 48px 0 #00ffe7cc;
-  z-index: 2;
+@media (max-width: 900px) {
+  .icon-carousel-quienessomos .carousel-icon img,
+  .icon-carousel-quienessomos .carousel-icon svg {
+    height: 110px;
+  }
 }
 
-.icon-carousel-quienessomos .carousel-title {
-  margin-top: 1.2rem;
-  font-size: 1.35rem;
-  color: #fff;
-  font-family: 'Montserrat', 'Roboto', sans-serif;
-  font-weight: 600;
-  text-align: center;
-  letter-spacing: 0.5px;
-  text-shadow: 0 2px 8px #181c2b99;
+@media (max-width: 600px) {
+  .icon-carousel-quienessomos {
+    min-height: 120px;
+  }
+  .icon-carousel-quienessomos .carousel-icon img,
+  .icon-carousel-quienessomos .carousel-icon svg {
+    height: 60px;
+  }
+  .icon-carousel-quienessomos .carousel-title {
+    font-size: 0.9rem;
+  }
 }
 
 @media (max-width: 1100px) {
