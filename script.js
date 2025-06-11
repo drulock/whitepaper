@@ -63,70 +63,67 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Tokenomics Pie Chart
     const ctx = document.getElementById('tokenomicsChart');
-    if (ctx) {
-        new Chart(ctx, {
-            type: 'pie',
-            data: {
-                labels: [
-                    'Equipo',
-                    'Marketing',
-                    'Recompensas Play-to-Earn',
-                    'Staking',
-                    'Venta Pública/Privada',
-                    'Reserva/Tesorería'
+if (ctx) {
+    new Chart(ctx, {
+        type: 'pie',
+        data: {
+            labels: [
+                'Recompensas Play-to-Earn',
+                'Comunity rewards',
+                'Marketing',
+                'Liquidez DEX y CEX',
+                'Token Burning (Deflacion)',
+                'Desarrolladores',
+                'Tesorería',
+                'Venta pública',
+                'Venta privada'
+            ],
+            datasets: [{
+                data: [30, 15, 10, 10, 10, 10, 5, 8, 2],
+                backgroundColor: [
+                    '#00ffe7', '#7c3aed', '#ffb300', '#1e90ff', '#ff4d4d', '#39ff14', '#fff', '#ff00ea', '#ffe600'
                 ],
-                datasets: [{
-                    data: [15, 20, 30, 15, 15, 5],
-                    backgroundColor: [
-                        '#1ecfcf', 
-                        '#b04fc2', 
-                        '#6fcf4f', 
-                        '#ffe066', 
-                        '#4f8cff', 
-                        '#e07fa1', 
-                    ],
-                    borderColor: [
-                        '#1ecfcf', '#b04fc2', '#6fcf4f', '#ffe066', '#4f8cff', '#e07fa1'
-                    ],
-                    borderWidth: 2,
-                    hoverOffset: 12
-                }]
+                borderWidth: 4, // <-- aquí
+                borderColor: 'rgba(0,255,231,0.25)', // <-- aquí
+                hoverOffset: 18 // <-- aquí
+            }]
+        },
+        options: {
+            plugins: {
+                legend: {
+                display: true,
+                position: 'bottom',
+                labels: {
+                    color: '#fff',
+                    font: { size: 16, family: 'Montserrat, Roboto, sans-serif' },
+                    padding: 22,
+                    boxWidth: 22,
+                    boxHeight: 22,
+                    // textStrokeColor y textStrokeWidth son experimentales, puedes omitirlos si no funcionan
+                }
             },
-            options: {
-                plugins: {
-                    legend: {
-                        display: true,
-                        position: 'bottom',
-                        labels: {
-                            color: '#fff',
-                            font: { size: 14, family: 'Montserrat, Roboto, sans-serif' },
-                            padding: 18,
-                            boxWidth: 18,
-                            boxHeight: 18,
-                        }
-                    },
-                    tooltip: {
-                        enabled: true,
-                        backgroundColor: '#222b44',
-                        titleColor: '#00ffe7',
-                        bodyColor: '#fff',
-                        borderColor: '#00ffe7',
-                        borderWidth: 1,
-                        padding: 12,
-                        caretSize: 8,
-                        cornerRadius: 8,
-                        callbacks: {
-                            label: function(context) {
-                                let label = context.label || '';
-                                let value = context.parsed || 0;
-                                return `${label}: ${value}%`;
-                            }
+                tooltip: {
+                    enabled: true,
+                    backgroundColor: '#222b44',
+                    titleColor: '#00ffe7',
+                    bodyColor: '#fff',
+                    borderColor: '#00ffe7',
+                    borderWidth: 1,
+                    padding: 12,
+                    caretSize: 8,
+                    cornerRadius: 8,
+                    callbacks: {
+                        label: function(context) {
+                            let label = context.label || '';
+                            let value = context.parsed || 0;
+                            return `${label}: ${value}%`;
                         }
                     }
                 }
             }
-        });
-    }
+        }
+    });
+}
 
     // Modal para icon-carousel-quienessomos
     const modalBg = document.getElementById('carouselModal');
