@@ -343,13 +343,13 @@ a:hover {
     text-decoration: none;
 }
 
-/* Carrusel de iconos grande y centrado con efecto 3D al pasar el ratón */
+/* Carrusel de iconos grande y centrado */
 .icon-carousel {
   width: 100%;
   max-width: 1100px;
   margin: 2rem auto;
-  overflow: hidden;
-  padding: 3rem 0;
+  
+  padding: 0;
   perspective: 1200px;
   display: flex;
   justify-content: center;
@@ -364,25 +364,11 @@ a:hover {
   width: 100%;
 }
 
-.carousel-icon {
-  flex: 0 0 auto;
-  width: 160px;
-  height: 160px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: transform 0.4s cubic-bezier(.25,.8,.25,1), box-shadow 0.3s;
-  transform-style: preserve-3d;
-  cursor: pointer;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.10);
-  box-shadow: 0 8px 32px 0 rgba(0,0,0,0.18);
-  position: relative;
-}
+
 
 .carousel-icon img, .carousel-icon svg {
-  width: 100px;
-  height: 100px;
+  width: 150px;
+  height: 150px;
   filter: drop-shadow(0 4px 24px #00ffe7cc);
   transition: transform 0.4s, filter 0.4s;
   pointer-events: none;
@@ -395,7 +381,7 @@ a:hover {
 
 .carousel-icon:hover img, .carousel-icon:hover svg {
   filter: drop-shadow(0 8px 32px #00ffe7);
-  transform: scale(1.18) rotateY(10deg);
+  transform: scale(1.5);
 }
 
 @media (max-width: 900px) {
@@ -414,12 +400,6 @@ a:hover {
 @keyframes spin3d {
   0%   { transform: rotateY(0deg) scale(1.18); }
   100% { transform: rotateY(360deg) scale(1.18); }
-}
-
-.carousel-icon:hover img,
-.carousel-icon:hover svg {
-  animation: spin3d 1.2s linear infinite;
-  filter: drop-shadow(0 8px 32px #00ffe7);
 }
 
 .tokenomics-chart-container {
