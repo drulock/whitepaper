@@ -259,6 +259,7 @@ a:hover {
     background-color: rgba(255,255,255,0.1);
     border: 1px solid rgba(255,255,255,0.2);
     border-radius: 8px;
+    filter: drop-shadow(0 4px 24px #00ffe7cc);
     padding: 20px;
     margin: 10px;
     width: calc(33% - 40px); /* Ajusta según cuantos quieras por fila */
